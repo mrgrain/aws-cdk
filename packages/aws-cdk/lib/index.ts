@@ -1,2 +1,2 @@
 export * from './api';
-export { cli } from './cli';
+export { cli, initCommandLine as exec } from './cli';
