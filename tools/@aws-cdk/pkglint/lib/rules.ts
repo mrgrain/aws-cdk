@@ -1665,6 +1665,7 @@ export class UbergenPackageVisibility extends ValidationRule {
     '@aws-cdk/cloudformation-diff',
     '@aws-cdk/cx-api',
     '@aws-cdk/region-info',
+    'aws-cdk-api',
     'aws-cdk-lib',
     'aws-cdk',
     'awslint',

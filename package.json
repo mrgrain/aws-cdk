@@ -121,6 +121,8 @@
       "@aws-cdk/pipelines/aws-sdk/**",
       "@aws-cdk/yaml-cfn/yaml",
       "@aws-cdk/yaml-cfn/yaml/**",
+      "aws-cdk-api/aws-cdk",
+      "aws-cdk-api/aws-cdk/**",
       "aws-cdk-lib/@balena/dockerignore",
       "aws-cdk-lib/@balena/dockerignore/**",
       "aws-cdk-lib/case",
