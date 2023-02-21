@@ -1,4 +1,4 @@
-name: macos-build
+name: build
 on:
   workflow_dispatch: {}
   schedule:
@@ -7,10 +7,10 @@ jobs:
   build:
     strategy:
       matrix:
-        os: ['macos-12']
+        os: ['macos-latest', 'ubuntu-latest']
         container-client: ['docker']
         include:
-          - os: "macos-12"
+          - os: "macos-latest"
             container-client: "finch"
     runs-on: ${{ matrix.os }
     env:
