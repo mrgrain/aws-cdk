@@ -20,7 +20,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup ${{ matrix.container-client }}
-        if: matrix.container-client == "finch"
+        if: matrix.container-client == 'finch'
         run: |-
           brew install --cask finch
           finch vm init
