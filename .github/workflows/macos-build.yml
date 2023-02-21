@@ -1,0 +1,36 @@
+name: macos-build
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron:  '5 4 * * 1-5'
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: ['macos-12']
+        container-client: ['docker']
+        include:
+          - os: "macos-12"
+            container-client: "finch"
+    runs-on: ${{ matrix.os }
+    env:
+      CI: "true"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup ${{ matrix.container-client }}
+        if: matrix.container-client == "finch"
+        run: |-
+          brew install --cask finch
+          finch vm init
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: build
+        run: npx lerna run build --concurrency=20 --stream
+      - name: test
+        run: npx lerna run test --concurrency=20 --stream
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v3
+        if: success() || failure() # always run, especially if the tests fail
+        with:
+          report_paths: '**/coverage/junit.xml'
