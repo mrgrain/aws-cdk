@@ -16,6 +16,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       CI: "true"
+      CDK_DOCKER: ${{ matrix.container-client }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
