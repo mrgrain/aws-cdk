@@ -39,7 +39,7 @@ jobs:
         run: |
           git config --global user.name 'aws-cdk-automation'
           git config --global user.email 'aws-cdk-automation@users.noreply.github.com'
-          git push --force-with-lease --atomic https://oauth2:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git FETCH_HEAD:test-main-pipeline
+          git push --force-with-lease --atomic https://oauth2:${{ secrets.PROJEN_GITHUB_TOKEN }}@github.com/${{ github.repository }}.git FETCH_HEAD:test-main-pipeline
       - name: Explain next steps
         uses: thollander/actions-comment-pull-request@v2
         with:
