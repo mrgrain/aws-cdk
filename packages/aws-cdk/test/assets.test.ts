@@ -15,6 +15,7 @@ beforeEach(() => {
 });
 
 describe('file assets', () => {
+  
   test('convert to manifest and parameters', async () => {
     // GIVEN
     const stack = stackWithAssets([
