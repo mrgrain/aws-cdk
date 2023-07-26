@@ -14,6 +14,7 @@ export async function buildAllStackAssets(stacks: cxapi.CloudFormationStackArtif
       await buildStackAssets(stack);
     } catch (err) {
       buildingErrors.push(err);
+
     }
   }
 
