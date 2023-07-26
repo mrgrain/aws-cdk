@@ -35,15 +35,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
+          # Needs to run with PROJEN_GITHUB_TOKEN because we need permissions to force push the branch
           token: ${{ secrets.PROJEN_GITHUB_TOKEN }}
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
+      - name: Debug
+        run: git remote -v
       - name: Submit to test-pipeline
-        # Needs to run with PROJEN_GITHUB_TOKEN because we need permissions to force push the branch
         run: |
           git config --global user.name 'aws-cdk-automation'
           git config --global user.email 'aws-cdk-automation@users.noreply.github.com'
-          git push --force --atomic ${{ github.repositoryUrl }} FETCH_HEAD:test-main-pipeline
+          git push --force --atomic git@github.com:${{ github.repository}}.git FETCH_HEAD:test-main-pipeline
       - name: Explain next steps
         uses: thollander/actions-comment-pull-request@v2
         with:
